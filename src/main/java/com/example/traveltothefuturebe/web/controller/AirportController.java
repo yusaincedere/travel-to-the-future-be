@@ -10,4 +10,6 @@ public interface AirportController {
     ResponseEntity<AirportDTO> getAirportById(String id);
 
     ResponseEntity<AirportDTO> createAirport(RequestCreateAirport requestCreateAirport);
+
+    ResponseEntity<Void> deleteAirportById(String id);
 }

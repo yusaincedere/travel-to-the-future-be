@@ -50,4 +50,9 @@ public class AirportServiceImpl implements AirportService{
         }
         return airportMapper.airportToAirportDTO(airPort);
     }
+
+    @Override
+    public void deleteAirportById(String id) {
+       airportRepository.deleteById(id);
+    }
 }

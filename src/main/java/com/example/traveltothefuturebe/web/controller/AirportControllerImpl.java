@@ -7,10 +7,7 @@ import com.example.traveltothefuturebe.web.request.RequestCreateAirport;
 import com.example.traveltothefuturebe.web.response.ResponseGetAllAirports;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequestMapping(path=URLConstants.AIRPORT)
 @RestController
@@ -35,10 +32,18 @@ public class AirportControllerImpl implements AirportController{
         return ResponseEntity.status(HttpStatus.OK).body(airportDTO);
     }
 
+    @PostMapping(path = URLConstants.AirportUrlConstants.CREATE_AIRPORT)
     @Override
-    public ResponseEntity<AirportDTO> createAirport(RequestCreateAirport requestCreateAirport) {
+    public ResponseEntity<AirportDTO> createAirport(@RequestBody RequestCreateAirport requestCreateAirport) {
         AirportDTO airportDTO = airportService.createAirport(requestCreateAirport);
         return ResponseEntity.status(HttpStatus.CREATED).body(airportDTO);
+    }
+
+    @DeleteMapping(path = URLConstants.AirportUrlConstants.DELETE_AIRPORT_BY_ID)
+    @Override
+    public ResponseEntity<Void> deleteAirportById(@PathVariable String id) {
+        airportService.deleteAirportById(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
 

@@ -10,4 +10,6 @@ public interface AirportService {
     AirportDTO getAirportById(String id);
 
     AirportDTO createAirport(RequestCreateAirport requestCreateAirport);
+
+    void deleteAirportById(String id);
 }

@@ -1,10 +1,12 @@
 package com.example.traveltothefuturebe.web.controller;
 
 import com.example.traveltothefuturebe.common.URLConstants;
+import com.example.traveltothefuturebe.domain.dto.AirportDTO;
 import com.example.traveltothefuturebe.service.AirportService;
 import com.example.traveltothefuturebe.web.response.ResponseGetAllAirports;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,4 +25,13 @@ public class AirportControllerImpl implements AirportController{
         ResponseGetAllAirports response = airportService.getAllAirports();
         return ResponseEntity.ok(response);
     }
+
+    @GetMapping(path = URLConstants.AirportUrlConstants.GET_AIRPORT_BY_ID)
+    @Override
+    public ResponseEntity<AirportDTO> getAirportById(@PathVariable String id) {
+        AirportDTO airportDTO = airportService.getAirportById(id);
+        return ResponseEntity.ok(airportDTO);
+    }
+
+
 }

@@ -4,8 +4,10 @@ import com.example.traveltothefuturebe.common.ExceptionConstants;
 import com.example.traveltothefuturebe.domain.dto.AirportDTO;
 import com.example.traveltothefuturebe.domain.mapper.AirportMapper;
 import com.example.traveltothefuturebe.domain.model.AirPort;
+import com.example.traveltothefuturebe.exception.CreateException;
 import com.example.traveltothefuturebe.exception.NotFoundException;
 import com.example.traveltothefuturebe.repository.AirportRepository;
+import com.example.traveltothefuturebe.web.request.RequestCreateAirport;
 import com.example.traveltothefuturebe.web.response.ResponseGetAllAirports;
 import org.springframework.stereotype.Service;
 
@@ -34,8 +36,18 @@ public class AirportServiceImpl implements AirportService{
     public AirportDTO getAirportById(String id) {
         Optional<AirPort> optionalAirPort =airportRepository.findById(id);
         if(optionalAirPort.isEmpty()){
-            throw new NotFoundException(ExceptionConstants.FLIGHT_NOT_FOUND_MESSAGE+" with id: " +id);
+            throw new NotFoundException(ExceptionConstants.AIRPORT_NOT_FOUND_MESSAGE+" with id: " +id);
         }
         return airportMapper.airportToAirportDTO(optionalAirPort.get());
+    }
+
+    @Override
+    public AirportDTO createAirport(RequestCreateAirport requestCreateAirport) {
+        AirPort airPort = AirPort.builder().name(requestCreateAirport.getName())
+                .city(requestCreateAirport.getCity()).build();
+        if(airPort == null){
+            throw new CreateException(ExceptionConstants.AIRPORT_CREATE_EXCEPTION_MESSAGE);
+        }
+        return airportMapper.airportToAirportDTO(airPort);
     }
 }

@@ -12,4 +12,5 @@ public interface AirportMapper {
     AirportDTO airportToAirportDTO(AirPort airPort);
 
     List<AirportDTO> airportsToAirportDTOs(List<AirPort> airPort);
+
 }

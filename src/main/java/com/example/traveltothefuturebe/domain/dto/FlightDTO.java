@@ -12,6 +12,7 @@ import java.math.BigDecimal;
 @SuperBuilder
 @NoArgsConstructor
 public class FlightDTO {
+    private String id;
     private BigDecimal price;
     private String airportName;
     private String departureCity;

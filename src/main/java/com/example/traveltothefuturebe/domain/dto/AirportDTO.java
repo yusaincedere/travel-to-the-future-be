@@ -10,6 +10,7 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @SuperBuilder
 public class AirportDTO {
+    private String id;
     private String city;
     private String name;
 }

@@ -22,4 +22,7 @@ public class AirPort {
 
     @DBRef
     private List<Flight> departingFlights;
+
+    @DBRef
+    private List<Flight> arrivingFlights;
 }

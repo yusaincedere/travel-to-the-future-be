@@ -55,4 +55,17 @@ public class AirportServiceImpl implements AirportService{
     public void deleteAirportById(String id) {
        airportRepository.deleteById(id);
     }
+
+    @Override
+    public AirportDTO updateAirport(String id, AirportDTO updatedAirportDTO) {
+        Optional<AirPort> optionalAirPort = airportRepository.findById(id);
+        if(optionalAirPort.isEmpty()){
+            throw new NotFoundException(ExceptionConstants.AIRPORT_NOT_FOUND_MESSAGE+ " with id: " + id);
+        }
+        AirPort airPort = optionalAirPort.get();
+        airPort.setCity(updatedAirportDTO.getCity() != null ? updatedAirportDTO.getCity() : airPort.getCity());
+        airPort.setName(updatedAirportDTO.getName() != null ? updatedAirportDTO.getName() : airPort.getName());
+        airportRepository.save(airPort);
+        return airportMapper.airportToAirportDTO(airPort);
+    }
 }

@@ -46,5 +46,12 @@ public class AirportControllerImpl implements AirportController{
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
+    @PutMapping(path = URLConstants.AirportUrlConstants.UPDATE_AIRPORT_BY_ID)
+    @Override
+    public ResponseEntity<AirportDTO> updateAirportById(@PathVariable String id, @RequestBody AirportDTO updatedAirportDTO) {
+       AirportDTO airportDTO = airportService.updateAirport(id,updatedAirportDTO);
+       return ResponseEntity.status(HttpStatus.OK).body(airportDTO);
+    }
+
 
 }

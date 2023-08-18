@@ -1,7 +1,17 @@
 spring:
+  security:
+    user:
+      name: admin
+      password: admin
   data:
     mongodb:
       host: localhost
       port: 27017
       database: traveltothefuredb
       auto-index-creation: true
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: true

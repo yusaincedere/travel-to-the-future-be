@@ -3,6 +3,8 @@ package com.example.traveltothefuturebe.common;
 public class URLConstants {
     public static final String AIRPORT = "/airport";
     public static final String FLIGHT = "/flight";
+
+    public static final String USER = "/user";
     public static class AirportUrlConstants{
         public static final String GET_ALL_AIRPORTS = "/airports";
         public static final String GET_AIRPORT_BY_ID = "/{id}";
@@ -20,5 +22,14 @@ public class URLConstants {
         public static final String CREATE_FLIGHT = "/create";
         public static final String DELETE_FLIGHT_BY_ID = "/delete/{id}";
         public static final String UPDATE_FLIGHT_BY_ID = "/update/{id}";
+    }
+
+    public static class UserUrlConstants{
+        public static final String GET_ALL_USERS= "/users";
+        public static final String GET_USER_BY_USERNAME= "/{name}";
+        public static final String CREATE_USER= "/create";
+        public static final String DELeTE_USER_BY_ID = "/delete/{id}";
+        public static final String UPDATE_USER_BY_ID = "/update/{user}";
+        public static final String DELETE_FLIGHT_BY_ID = "/delete/{id}";
     }
 }

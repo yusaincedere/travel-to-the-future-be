@@ -18,8 +18,12 @@ public class URLConstants {
     public static class FlightUrlConstants{
         public static final String GET_ALL_FLIGHTS_BY_DEPARTURE_CITY= "/flights/{departureCity}";
         public static final String GET_ALL_FLIGHTS_BY_DEPARTURE_INFO_AND_ARRIVAL_INFO= "/flights/from/{departureCity}/{departureTime}/to" +
-                "/{arrivalCity}/{arrivalTime}";
+                "/{arrivalCity}/{comeBackTime}";
+
+        public static final String GET_ALL_FLIGHTS_BY_DEPARTURE_INFO_AND_ARRIVAL_CITY= "/flights/from/{departureCity}/{departureTime}/to" +
+                "                /{arrivalCity}/";
         public static final String GET_ALL_FLIGHTS_BY_CITY_AND_DEPARTURE_TIME= "/flights/{departureCity}/{departureTime}";
+
         public static final String GET_FLIGHT_BY_ID = "/{id}";
         public static final String CREATE_FLIGHT = "/create";
         public static final String DELETE_FLIGHT_BY_ID = "/delete/{id}";

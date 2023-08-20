@@ -20,7 +20,7 @@ public interface FlightMapper {
     @Mapping(target = "arrivalTime",source = "arrivalTime",qualifiedByName = "instantToDateString")
     FlightDTO flightToFlightDTO(Flight flight);
 
-    List<Flight> flightsToFlightDTOs(List<Flight> flights);
+    List<FlightDTO> flightsToFlightDTOs(List<Flight> flights);
 
     @Named("instantToDateString")
     default String instantToDateString(Instant instant){

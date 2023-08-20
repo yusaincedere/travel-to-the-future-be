@@ -5,6 +5,9 @@ import com.example.traveltothefuturebe.domain.mapper.UserMapper;
 import com.example.traveltothefuturebe.domain.model.User;
 import com.example.traveltothefuturebe.repository.UserRepository;
 import com.example.traveltothefuturebe.web.request.RequestCreateUser;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -30,5 +33,15 @@ public class UserServiceImpl implements UserService{
                 .role(requestCreateUser.getRole()).build();
         User createdUser = userRepository.save(user);
         return userMapper.userToUserDTO(createdUser);
+    }
+
+    @Override
+    public UserDetailsService userDetailsService() {
+        return new UserDetailsService() {
+            @Override
+            public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+                return userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User not found"));
+            }
+        };
     }
 }

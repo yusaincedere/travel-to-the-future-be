@@ -13,7 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-@Document(collation = "airports")
+@Document(collection = "airports")
 @SuperBuilder
 public class AirPort {
 

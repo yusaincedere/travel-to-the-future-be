@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,14 +20,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthenticationControllerImpl implements AuthenticationController{
     private final AuthenticationService authenticationService;
 
+    @PostMapping(path = URLConstants.AuthenticationUrlConstants.CREATE_USER)
     @Override
-    public ResponseEntity<UserDTO> createUser(RequestCreateUser requestCreateUser) {
+    public ResponseEntity<UserDTO> createUser(@RequestBody RequestCreateUser requestCreateUser) {
         return ResponseEntity.status(HttpStatus.CREATED).body(authenticationService.createUser(requestCreateUser));
     }
 
     @PostMapping(path = URLConstants.AuthenticationUrlConstants.SIGN_IN)
     @Override
-    public ResponseEntity<JwtAuthenticationResponse> signIn(RequestSignIn requestSignIn) {
+    public ResponseEntity<JwtAuthenticationResponse> signIn(@RequestBody RequestSignIn requestSignIn) {
         return ResponseEntity.status(HttpStatus.OK).body(authenticationService.signIn(requestSignIn));
     }
 }

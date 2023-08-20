@@ -9,6 +9,8 @@ spring:
       port: 27017
       database: traveltothefuredb
       auto-index-creation: true
+  scheduled:
+    cron-expression: "0 0 0 * * *"
 springdoc:
   api-docs:
     path: /api-docs
@@ -18,6 +20,11 @@ springdoc:
 
 logging:
   level:
+    com:
+      example:
+        traveltothefuturebe:
+          scheduler:
+            com.example.traveltothefuturebe.scheduler.FlightGeneratorScheduler: DEBUG
     org:
       springframework:
         security: DEBUG

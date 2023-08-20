@@ -22,6 +22,7 @@ public class AirPort {
     private String name;
     private String city;
 
+
     @DBRef
     private List<Flight> departingFlights;
 

@@ -23,6 +23,7 @@ public class Flight {
     private Instant departureTime;
     private Instant arrivalTime;
 
+
     @DBRef
     private AirPort departureAirport;
 

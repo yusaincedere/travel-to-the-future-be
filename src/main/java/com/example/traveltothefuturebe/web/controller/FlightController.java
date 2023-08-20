@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface FlightController {
-    ResponseEntity<ResponseGetAllFlights> getAllFlightsByArrivalCity(String city);
+    ResponseEntity<ResponseGetAllFlights> getAllFlightsByDepartureCity(String city);
 
     ResponseEntity<DepartureAndArrivalFlights> getDepartureAndComeBackFlights(String departureCity, LocalDate departureTime,
                                                                                     String arrivalCity, LocalDate comeBackTime);

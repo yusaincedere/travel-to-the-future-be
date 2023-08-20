@@ -45,10 +45,8 @@ public class AirportServiceImpl implements AirportService{
     public AirportDTO createAirport(RequestCreateAirport requestCreateAirport) {
         AirPort airPort = AirPort.builder().name(requestCreateAirport.getName())
                 .city(requestCreateAirport.getCity()).build();
-        if(airPort == null){
-            throw new CreateException(ExceptionConstants.AIRPORT_CREATE_EXCEPTION_MESSAGE);
-        }
-        return airportMapper.airportToAirportDTO(airPort);
+        AirPort savedAirport = airportRepository.save(airPort);
+        return airportMapper.airportToAirportDTO(savedAirport);
     }
 
     @Override

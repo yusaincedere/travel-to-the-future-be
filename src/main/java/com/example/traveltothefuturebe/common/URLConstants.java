@@ -5,6 +5,8 @@ public class URLConstants {
     public static final String FLIGHT = "/flight";
 
     public static final String USER = "/user";
+
+    public static final String AUTHENTICATION = "/auth";
     public static class AirportUrlConstants{
         public static final String GET_ALL_AIRPORTS = "/airports";
         public static final String GET_AIRPORT_BY_ID = "/{id}";
@@ -31,5 +33,9 @@ public class URLConstants {
         public static final String DELeTE_USER_BY_ID = "/delete/{id}";
         public static final String UPDATE_USER_BY_ID = "/update/{user}";
         public static final String DELETE_FLIGHT_BY_ID = "/delete/{id}";
+    }
+
+    public static class AuthenticationUrlConstants{
+        public static final String SIGN_IN= "/singIn";
     }
 }

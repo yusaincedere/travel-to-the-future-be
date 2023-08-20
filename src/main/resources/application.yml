@@ -1,0 +1,35 @@
+spring:
+  security:
+    user:
+      name: admin
+      password: admin
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: traveltothefuredb
+      auto-index-creation: true
+  scheduled:
+    cron-expression: "0 0 0 * * *"
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: true
+
+logging:
+  level:
+    com:
+      example:
+        traveltothefuturebe:
+          scheduler:
+            com.example.traveltothefuturebe.scheduler.FlightGeneratorScheduler: DEBUG
+    org:
+      springframework:
+        security: DEBUG
+
+jwt:
+  expiration:
+    time:
+      hours: 2

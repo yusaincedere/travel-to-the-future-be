@@ -17,11 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class UserControllerImpl implements UserController{
     private final UserService userService;
-    @PostMapping(path = URLConstants.UserUrlConstants.CREATE_USER)
-    @Override
-    public ResponseEntity<UserDTO> createUser(@RequestBody RequestCreateUser requestCreateUser) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(userService.createUser(requestCreateUser));
-    }
+
 
 
 }

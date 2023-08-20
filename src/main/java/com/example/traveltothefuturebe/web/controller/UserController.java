@@ -5,5 +5,4 @@ import com.example.traveltothefuturebe.web.request.RequestCreateUser;
 import org.springframework.http.ResponseEntity;
 
 public interface UserController {
-    ResponseEntity<UserDTO> createUser(RequestCreateUser requestCreateUser);
 }

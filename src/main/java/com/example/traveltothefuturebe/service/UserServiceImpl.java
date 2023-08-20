@@ -2,15 +2,11 @@ package com.example.traveltothefuturebe.service;
 
 import com.example.traveltothefuturebe.domain.dto.UserDTO;
 import com.example.traveltothefuturebe.domain.mapper.UserMapper;
-import com.example.traveltothefuturebe.domain.model.User;
 import com.example.traveltothefuturebe.repository.UserRepository;
-import com.example.traveltothefuturebe.web.request.RequestCreateUser;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -21,17 +17,6 @@ public class UserServiceImpl implements UserService{
 
     private final UserMapper userMapper;
 
-    private final PasswordEncoder passwordEncoder;
-
-
-    @Override
-    public UserDTO createUser(RequestCreateUser requestCreateUser) {
-        User user = User.builder().password(passwordEncoder.encode(requestCreateUser.getPassword()))
-                .username(requestCreateUser.getUsername())
-                .role(requestCreateUser.getRole()).build();
-        User createdUser = userRepository.save(user);
-        return userMapper.userToUserDTO(createdUser);
-    }
 
     @Override
     public UserDetailsService userDetailsService() {

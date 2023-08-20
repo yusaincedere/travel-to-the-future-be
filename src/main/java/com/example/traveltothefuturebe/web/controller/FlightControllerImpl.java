@@ -35,7 +35,9 @@ public class FlightControllerImpl implements FlightController{
     }
 
     @Override
-    public ResponseEntity<FlightDTO> getDepartureFlights(String departureCity, LocalDate departureTime, String arrivalCity) {
-        return null;
+    public ResponseEntity<List<FlightDTO>> getDepartureFlights(@PathVariable String departureCity,
+                                                         @PathVariable String arrivalCity,
+                                                         @PathVariable LocalDate departureTime) {
+        return ResponseEntity.status(HttpStatus.OK).body(flightService.getDepartureFlights(departureCity,arrivalCity,departureTime));
     }
 }

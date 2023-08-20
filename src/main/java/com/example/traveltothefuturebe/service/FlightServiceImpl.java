@@ -46,4 +46,15 @@ public class FlightServiceImpl implements FlightService{
         return departureAndArrivalFlights;
 
     }
+
+    @Override
+    public List<FlightDTO> getDepartureFlights(String departureCity, String arrivalCity, LocalDate departureTime) {
+        Instant departureStartTime = departureTime.atTime(LocalTime.MIN).toInstant(ZoneOffset.UTC);
+        Instant departureEndTime = departureTime.atTime(LocalTime.MAX).toInstant(ZoneOffset.UTC);
+
+        List<Flight> departureFlights = flightRepository.findAllByArrivalAirportCityAndDepartureAirportCityAndDepartureTimeBetween(
+                arrivalCity,departureCity,departureStartTime,departureEndTime
+        );
+        return flightMapper.flightsToFlightDTOs(departureFlights);
+    }
 }
